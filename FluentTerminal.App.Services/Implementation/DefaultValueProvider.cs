@@ -24,16 +24,16 @@ namespace FluentTerminal.App.Services.Implementation
             };
         }
 
-        public ICollection<KeyBinding> GetDefaultKeyBindings(Command command)
+        public ICollection<KeyBinding> GetDefaultKeyBindings(AppCommand command)
         {
             switch (command)
             {
-                case Command.ToggleWindow:
+                case AppCommand.ToggleWindow:
                     return new List<KeyBinding>
                 {
                     new KeyBinding
                     {
-                        Command = Command.ToggleWindow,
+                        Command = AppCommand.ToggleWindow,
                         Ctrl = false,
                         Alt = false,
                         Shift = false,
@@ -41,12 +41,12 @@ namespace FluentTerminal.App.Services.Implementation
                     }
                 };
 
-                case Command.NextTab:
+                case AppCommand.NextTab:
                     return new List<KeyBinding>
                 {
                     new KeyBinding
                     {
-                        Command = Command.NextTab,
+                        Command = AppCommand.NextTab,
                         Ctrl = true,
                         Alt = false,
                         Shift = false,
@@ -54,12 +54,12 @@ namespace FluentTerminal.App.Services.Implementation
                     }
                 };
 
-                case Command.PreviousTab:
+                case AppCommand.PreviousTab:
                     return new List<KeyBinding>
                 {
                     new KeyBinding
                     {
-                        Command = Command.PreviousTab,
+                        Command = AppCommand.PreviousTab,
                         Ctrl = true,
                         Alt = false,
                         Shift = true,
@@ -67,15 +67,15 @@ namespace FluentTerminal.App.Services.Implementation
                     }
                 };
 
-                case Command.SwitchToTerm1:
-                case Command.SwitchToTerm2:
-                case Command.SwitchToTerm3:
-                case Command.SwitchToTerm4:
-                case Command.SwitchToTerm5:
-                case Command.SwitchToTerm6:
-                case Command.SwitchToTerm7:
-                case Command.SwitchToTerm8:
-                case Command.SwitchToTerm9:
+                case AppCommand.SwitchToTerm1:
+                case AppCommand.SwitchToTerm2:
+                case AppCommand.SwitchToTerm3:
+                case AppCommand.SwitchToTerm4:
+                case AppCommand.SwitchToTerm5:
+                case AppCommand.SwitchToTerm6:
+                case AppCommand.SwitchToTerm7:
+                case AppCommand.SwitchToTerm8:
+                case AppCommand.SwitchToTerm9:
                     return new List<KeyBinding>
                 {
                     new KeyBinding
@@ -84,16 +84,16 @@ namespace FluentTerminal.App.Services.Implementation
                         Ctrl = true,
                         Alt = false,
                         Shift = false,
-                        Key = (int)ExtendedVirtualKey.Number1 + (command - Command.SwitchToTerm1)
+                        Key = (int)ExtendedVirtualKey.Number1 + (command - AppCommand.SwitchToTerm1)
                     }
                 };
 
-                case Command.NewTab:
+                case AppCommand.NewTab:
                     return new List<KeyBinding>
                 {
                     new KeyBinding
                     {
-                        Command = Command.NewTab,
+                        Command = AppCommand.NewTab,
                         Ctrl = true,
                         Alt = false,
                         Shift = false,
@@ -101,12 +101,12 @@ namespace FluentTerminal.App.Services.Implementation
                     }
                 };
 
-                case Command.ConfigurableNewTab:
+                case AppCommand.ConfigurableNewTab:
                     return new List<KeyBinding>
                 {
                     new KeyBinding
                     {
-                        Command = Command.ConfigurableNewTab,
+                        Command = AppCommand.ConfigurableNewTab,
                         Ctrl = true,
                         Alt = false,
                         Shift = true,
@@ -114,12 +114,12 @@ namespace FluentTerminal.App.Services.Implementation
                     }
                 };
 
-                case Command.CloseTab:
+                case AppCommand.CloseTab:
                     return new List<KeyBinding>
                 {
                     new KeyBinding
                     {
-                        Command = Command.CloseTab,
+                        Command = AppCommand.CloseTab,
                         Ctrl = true,
                         Alt = false,
                         Shift = false,
@@ -127,12 +127,12 @@ namespace FluentTerminal.App.Services.Implementation
                     }
                 };
 
-                case Command.NewWindow:
+                case AppCommand.NewWindow:
                     return new List<KeyBinding>
                 {
                     new KeyBinding
                     {
-                        Command = Command.NewWindow,
+                        Command = AppCommand.NewWindow,
                         Ctrl = true,
                         Alt = false,
                         Shift = false,
@@ -140,12 +140,12 @@ namespace FluentTerminal.App.Services.Implementation
                     }
                 };
 
-                case Command.ShowSettings:
+                case AppCommand.ShowSettings:
                     return new List<KeyBinding>
                 {
                     new KeyBinding
                     {
-                        Command = Command.ShowSettings,
+                        Command = AppCommand.ShowSettings,
                         Ctrl = true,
                         Alt = false,
                         Shift = false,
@@ -153,12 +153,12 @@ namespace FluentTerminal.App.Services.Implementation
                     }
                 };
 
-                case Command.Copy:
+                case AppCommand.Copy:
                     return new List<KeyBinding>
                 {
                     new KeyBinding
                     {
-                        Command = Command.Copy,
+                        Command = AppCommand.Copy,
                         Ctrl = true,
                         Alt = false,
                         Shift = false,
@@ -166,12 +166,12 @@ namespace FluentTerminal.App.Services.Implementation
                     }
                 };
 
-                case Command.Paste:
+                case AppCommand.Paste:
                     return new List<KeyBinding>
                 {
                     new KeyBinding
                     {
-                        Command = Command.Paste,
+                        Command = AppCommand.Paste,
                         Ctrl = true,
                         Alt = false,
                         Shift = false,
@@ -179,12 +179,12 @@ namespace FluentTerminal.App.Services.Implementation
                     }
                 };
 
-                case Command.Search:
+                case AppCommand.Search:
                     return new List<KeyBinding>
                 {
                     new KeyBinding
                     {
-                        Command = Command.Search,
+                        Command = AppCommand.Search,
                         Ctrl = true,
                         Alt = false,
                         Shift = false,
@@ -192,12 +192,12 @@ namespace FluentTerminal.App.Services.Implementation
                     }
                 };
 
-                case Command.ToggleFullScreen:
+                case AppCommand.ToggleFullScreen:
                     return new List<KeyBinding>
                 {
                     new KeyBinding
                     {
-                        Command = Command.ToggleFullScreen,
+                        Command = AppCommand.ToggleFullScreen,
                         Ctrl = false,
                         Alt = true,
                         Shift = false,
@@ -205,12 +205,12 @@ namespace FluentTerminal.App.Services.Implementation
                     }
                 };
 
-                case Command.SelectAll:
+                case AppCommand.SelectAll:
                     return new List<KeyBinding>
                 {
                     new KeyBinding
                     {
-                        Command = Command.SelectAll,
+                        Command = AppCommand.SelectAll,
                         Ctrl = true,
                         Alt = false,
                         Shift = false,
@@ -218,12 +218,12 @@ namespace FluentTerminal.App.Services.Implementation
                     }
                 };
 
-                case Command.Clear:
+                case AppCommand.Clear:
                     return new List<KeyBinding>
                 {
                     new KeyBinding
                     {
-                        Command = Command.Clear,
+                        Command = AppCommand.Clear,
                         Ctrl = true,
                         Alt = false,
                         Shift = false,

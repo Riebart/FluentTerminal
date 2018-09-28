@@ -270,7 +270,7 @@ namespace FluentTerminal.App.ViewModels
             return _terminalView.FindPrevious(SearchText);
         }
 
-        private IEnumerable<KeyBinding> FlattenKeyBindings(IDictionary<Command, ICollection<KeyBinding>> keyBindings)
+        private IEnumerable<KeyBinding> FlattenKeyBindings(IDictionary<AppCommand, ICollection<KeyBinding>> keyBindings)
         {
             return keyBindings.Values.SelectMany(k => k);
         }
@@ -306,14 +306,17 @@ namespace FluentTerminal.App.ViewModels
             });
         }
 
-        private async void OnKeyboardCommandReceived(object sender, Command e)
+        private async void OnKeyboardCommandReceived(object sender, string command)
         {
-            if (e == Command.Copy)
+            // Use the SettingsService to parse the command string.
+            ICommand e = _settingsService.ParseCommandString(command);
+
+            if (e.Equals(AppCommand.Copy))
             {
                 var selection = await _terminalView.GetSelection().ConfigureAwait(true);
                 _clipboardService.SetText(selection);
             }
-            else if (e == Command.Paste)
+            else if (e.Equals(AppCommand.Paste))
             {
                 var content = await _clipboardService.GetText().ConfigureAwait(true);
                 if (content != null)
@@ -321,7 +324,7 @@ namespace FluentTerminal.App.ViewModels
                     await _trayProcessCommunicationService.WriteText(_terminalId, content).ConfigureAwait(true);
                 }
             }
-            else if (e == Command.Search)
+            else if (e.Equals(AppCommand.Search))
             {
                 ShowSearchPanel = !ShowSearchPanel;
                 if (ShowSearchPanel)
