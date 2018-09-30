@@ -286,7 +286,6 @@ namespace FluentTerminal.App.ViewModels
                 }
             }
             return ret;
-            //return keyBindings.Values.SelectMany(k => new PairedKeyBinding();
         }
 
         private async void OnApplicationSettingsChanged(object sender, ApplicationSettings e)
