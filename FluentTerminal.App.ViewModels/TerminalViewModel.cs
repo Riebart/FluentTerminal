@@ -275,10 +275,10 @@ namespace FluentTerminal.App.ViewModels
         /// </summary>
         /// <param name="keyBindings"></param>
         /// <returns></returns>
-        private IEnumerable<Dictionary<string, object>> FlattenKeyBindings(IDictionary<Command, ICollection<KeyBinding>> keyBindings)
+        private IEnumerable<Dictionary<string, object>> FlattenKeyBindings(IDictionary<AbstractCommand, ICollection<KeyBinding>> keyBindings)
         {
             List<Dictionary<string, object>> ret = new List<Dictionary<string, object>>();
-            foreach (KeyValuePair<Command, ICollection<KeyBinding>> kv in keyBindings)
+            foreach (KeyValuePair<AbstractCommand, ICollection<KeyBinding>> kv in keyBindings)
             {
                 foreach (KeyBinding kb in kv.Value)
                 {
@@ -323,14 +323,14 @@ namespace FluentTerminal.App.ViewModels
         private async void OnKeyboardCommandReceived(object sender, string command)
         {
             // Use the SettingsService to parse the command string.
-            Command e = _settingsService.ParseCommandString(command);
+            AbstractCommand e = _settingsService.ParseCommandString(command);
 
-            if (e.Equals(AppCommand.Copy))
+            if (e.Equals(Command.Copy))
             {
                 var selection = await _terminalView.GetSelection().ConfigureAwait(true);
                 _clipboardService.SetText(selection);
             }
-            else if (e.Equals(AppCommand.Paste))
+            else if (e.Equals(Command.Paste))
             {
                 var content = await _clipboardService.GetText().ConfigureAwait(true);
                 if (content != null)
@@ -338,7 +338,7 @@ namespace FluentTerminal.App.ViewModels
                     await _trayProcessCommunicationService.WriteText(_terminalId, content).ConfigureAwait(true);
                 }
             }
-            else if (e.Equals(AppCommand.Search))
+            else if (e.Equals(Command.Search))
             {
                 ShowSearchPanel = !ShowSearchPanel;
                 if (ShowSearchPanel)
