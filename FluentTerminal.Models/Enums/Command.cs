@@ -14,9 +14,7 @@
         ConfigurableNewWindow,
         ShowSettings,
         Copy,
-
         CopyWithoutNewlines,
-
         Paste,
         PasteWithoutNewlines,
         Search,

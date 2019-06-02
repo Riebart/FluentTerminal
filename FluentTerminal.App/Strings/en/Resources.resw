@@ -702,6 +702,11 @@ Fuzzy</comment>
     <comment>Command
 Fuzzy</comment>
   </data>
+  <data name="Command.CopyWithoutNewlines" xml:space="preserve">
+    <value>Copy without newlines</value>
+    <comment>Command
+Fuzzy</comment>
+  </data>
   <data name="Command.PreviousTab" xml:space="preserve">
     <value>Previous tab</value>
     <comment>Command
