@@ -362,6 +362,16 @@ namespace FluentTerminal.App.ViewModels
                         }
                         break;
                     }
+                case nameof(Command.CopyWithoutNewlines):
+                    {
+                        var selection = await Terminal.GetSelectedText().ConfigureAwait(true);
+                        ClipboardService.SetText(ShellProfile.NewlinePattern.Replace(selection, string.Empty));
+                        if (_terminalOptions.ShowTextCopied)
+                        {
+                            Overlay.Show(I18N.Translate("TextCopied"));
+                        }
+                        break;
+                    }
                 case nameof(Command.Paste):
                     {
                         string content = await ClipboardService.GetText().ConfigureAwait(true);
