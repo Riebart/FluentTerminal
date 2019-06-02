@@ -192,6 +192,19 @@ namespace FluentTerminal.App.Services.Implementation
                     }
                 };
 
+                case Command.CopyWithoutNewlines:
+                    return new List<KeyBinding>
+                {
+                    new KeyBinding
+                    {
+                        Command = nameof(Command.CopyWithoutNewlines),
+                        Ctrl = true,
+                        Alt = false,
+                        Shift = true,
+                        Key = (int)ExtendedVirtualKey.C
+                    }
+                };
+
                 case Command.Paste:
                     return new List<KeyBinding>
                 {
